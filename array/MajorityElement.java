@@ -3,8 +3,9 @@ package array;
 import java.util.HashMap;
 import java.util.Map;
 
+//Expected solution for Majority element is Moore's Voting, code is in separate file
 public class MajorityElement {
-    static int majorityElement(int[] arr){
+    private static int majorityElement(int[] arr){
         HashMap<Integer, Integer> mp = new HashMap<>();
 
         for(int i=0; i<arr.length; i++){
