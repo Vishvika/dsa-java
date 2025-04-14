@@ -2,7 +2,7 @@ package linkedList;
 
 public class InsertNode {
     static Node insertNode(Node head, int val, int key){
-        if(head==null){return head;}
+        if(head==null){return new Node(val);}
         if(key==1){
             return new Node(val, head);
         }
@@ -21,6 +21,9 @@ public class InsertNode {
         return head;
     }
     static Node insertTail(Node head, int val){
+        if(head == null){
+            return new Node(val);
+        }
         Node temp=head;
         while(temp.next!=null){
             temp=temp.next;
