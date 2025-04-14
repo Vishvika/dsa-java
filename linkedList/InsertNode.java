@@ -1,39 +1,37 @@
 package linkedList;
 
 public class InsertNode {
-    static Node insertNode(Node head, int val, int k){
-        if(head == null){ return new Node(val); }
-        if(k == 1){return new Node(val, head);}
+    static Node insertNode(Node head, int val, int key){
+        if(head==null){return head;}
+        if(key==1){
+            return new Node(val, head);
+        }
         Node temp = head;
         int count = 0;
-        Node prev = null;
-        while(temp.next != null){
+        while(temp.next!=null){
             count++;
-            if(count == k){
-                prev.next = temp;
-                temp.next = prev.next.next;
-                break;
+            if(count == key -1){
+                Node newNode = new Node(val, temp.next);
+                newNode.next = temp.next;
+                temp.next = newNode;
             }
-            prev = temp;
-            temp = temp.next;
+            temp=temp.next;
         }
 
         return head;
     }
     static Node insertTail(Node head, int val){
-        if(head == null){
-            return new Node(val);
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
         }
-        Node temp = head;
-        while(temp.next != null){
-            temp = temp.next;
-        }
-        Node newNode = new Node(val);
-        temp.next = newNode;
+        Node newNode = new Node(val, null);
+        temp.next=newNode;
         return head;
     }
-    static  Node insertHead(Node head, int val){
-        return new Node(val, head);
+    static Node insertHead(Node head, int val){
+        Node temp = new Node(val, head);
+        return temp;
     }
 
     private static Node arrayToLL(int[] arr) {
@@ -58,6 +56,7 @@ public class InsertNode {
         int[] arr = {1,2,3,4,5};
         Node head = arrayToLL(arr);
         head = insertHead(head, 2);
+        head = insertNode(head, 7, 4);
         head = insertTail(head, 7);
         print(head);
     }
